@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Palms Menu</title>
+  <!-- Favicon: use existing logo image as favicon and touch icon -->
+  <link rel="icon" href="./logo_4.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="./logo_4.jpg">
+  <meta name="msapplication-TileImage" content="./logo_4.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -61,7 +65,7 @@
       .title-modern {
         /* Use a flowing script first (Great Vibes) then an elegant serif fallback */
         font-family: 'Great Vibes', 'Playfair Display', serif;
-        background: linear-gradient(90deg, #FFE082, #FFDF5D, #FFD54A, #FFD54A);
+        background: linear-gradient(90deg, #FFE082, #e1c553, #f6cf51, #937a27);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -78,12 +82,31 @@
         transform: translateY(-2px) scale(1.02);
         text-shadow: 0 6px 18px rgba(0,0,0,0.45);
       }
+      /* Make menu titles slightly smaller on small (phone) screens so they don't get
+         pushed under the right-side decorative images. Targets common utility
+         class patterns and the hero title. Uses !important to override Tailwind
+         utility sizing for narrow viewports only. */
+      @media (max-width: 639px) {
+        /* Hero title */
+        .title-modern, h1.title-modern, h1[class*="text-7xl"] {
+          font-size: 2.2rem !important; /* ~35px -> reduce to fit */
+          line-height: 1.02 !important;
+        }
+
+        /* Section large headings (text-4xl) */
+        p.font-bold[class*="text-4xl"], p.font-bold.text-5xl, p[class*="text-5xl"],
+        p[class*="text-4xl"] {
+          font-size: 1.45rem !important; /* reduce from 2.25rem */
+          line-height: 1.05 !important;
+        }
+
+        /* Sub-headings (text-3xl -> slightly smaller)
+           Target h2 and p elements that use the utility class */
+        h2[class*="text-3xl"], p[class*="text-3xl"], h2.text-3xl {
+          font-size: 1.15rem !important; /* reduce from ~1.875rem */
+        }
+      }
     </style>
-    <!-- Use the site logo as the favicon so browsers show the same icon in tabs/bookmarks -->
-    <link rel="icon" href="./logo_4.jpg" type="image/jpeg" />
-    <link rel="shortcut icon" href="./logo_4.jpg" />
-    <!-- Apple touch icon (some platforms prefer an explicit touch icon) -->
-    <link rel="apple-touch-icon" href="./logo_4.jpg" />
   </head>
   <!-- BODY stays BLACK -->
   <body class="bg-black text-white font-inter antialiased">
@@ -103,24 +126,24 @@
         <img
           src="./logo_4.jpg"
           alt="Palms"
-          class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-b-full object-cover shadow-md ring-2 ring-yellow-400/50 logo-anim"
+          class="w-30 h-32 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-b-full object-cover shadow-md logo-anim"
           style="filter: saturate(1.3) contrast(1.08);"
         />
       </div>
       <div class="relative z-10 flex items-center justify-center h-full px-6 ">
         <div>
           <h1
-            class="text-4xl sm:text-5xl lg:text-6xl font-inter font-bold text-yellow-400 title-modern"
+            class="text-7xl sm:text-5xl lg:text-6xl font-inter font-bold text-yellow-400 title-modern"
           >
             Palms Menu
           </h1>
-       <p class="absolute  right-2 bottom-6 text-yellow-400 text-[10px] font-medium">
+       <p class="absolute  right-2 bottom-10 text-yellow-400 text-[18px] font-medium">
       Call us: +251 931 080 356  
     </p>
-     <p class="absolute  right-2  bottom-3 text-yellow-400 text-[10px] font-medium">
+     <p class="absolute  right-2  bottom-5 text-yellow-400 text-[18px] font-medium">
        +251 912 989 812
     </p>
-     <p class="absolute  right-2  bottom-0 text-yellow-400 text-[10px] font-medium">
+     <p class="absolute  right-2  bottom-0 text-yellow-400 text-[18px] font-medium">
        +251 918 765 522
     </p>
         <div>
@@ -137,41 +160,33 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
 
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
+     <div class="relative z-10 pt-10 px-6 md:px-12 pb-12">
+      <img
+          src="./b3.png"
+          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
+
+    
 
 
-     style="
-       background-image: url(/b3.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Breakfast</p>
-        <p class="font-bold text-2xl text-yellow-400 leading-sung">& Sandwiches</p>
+      <p class="font-bold text-4xl mt-0 leading-sung mb-2 text-yellow-400  ">Breakfast &</p>
+        <p class="font-bold text-4xl mt-0 mb-5 text-yellow-400 leading-sung">Sandwiches</p>
         
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3">ቁርስ እና ሳንዱች</p>
+        <p class="font-semibold text-3xl mt-0 mb-1 text-yellow-400 ">ቁርስ እና ሳንዱች</p>
      </div>
      <div class="grid grid-cols-2 gap-4">
    <div >
-  <h2 class="font-bold mx-auto px-2  text-1xl text-yellow-400 m-0">Breakfast</h2>
-  <h2 class="font-semibold mx-auto px-2 text-1xl text-yellow-400  mb-1">ቁርስ</h2>
-  <div id="breakfast-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold mx-auto px-2  text-3xl text-yellow-400 px-2 mt-0">Breakfast</h2>
+  <h2 class="font-semibold mx-auto px-2 text-2xl text-yellow-400 px-2 mb-2">ቁርስ</h2>
+  <div id="breakfast-list" class="max-w-md mx-auto px-3 mb-6"></div>
 </div>
  <div class="text-left">
-  <h2 class="font-bold  text-1xl text-yellow-400 m-0">Sandwiches</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400  mb-1">ሳንዱች</h2>
-  <div id="sandwiches-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold  text-3xl text-yellow-400 m-0 mx-auto px-2">Sandwiches</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400  mb-2 px-2">ሳንዱች</h2>
+  <div id="sandwiches-list" class="max-w-md mx-auto px-3 mb-8"></div>
 </div>
-
+ </div>
+      </div>
     </section>
     <!--Secound section -->
     
@@ -183,42 +198,30 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
 
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
-
-
-     style="
-       background-image: url(./c3.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Fasting</p>
-       <p class="font-bold text-2xl text-yellow-400  ">Breakfast</p>
-        <p class="font-bold text-2xl text-yellow-400 leading-sung">& Fasting Food</p>
+       <div class="relative z-10 pt-10 px-6 md:px-12 pb-12">
+<img
+          src="./c3.png"
+          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
+      <p class="font-bold text-4xl  text-yellow-400  mb-2">Fasting</p>
+       <p class="font-bold text-4xl  text-yellow-400 mb-2 ">Breakfast &</p>
+        <p class="font-bold text-4xl mt-0 mb-5 text-yellow-400 leading-sung">Fasting Food</p>
         
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3">የዖም ቁርስ እና የዖም ምግብ</p>
+        <p class="font-semibold text-3xl mt-0 text-yellow-400 ">የዖም ቁርስ እና የዖም ምግብ</p>
   </div>
   <div class="grid grid-cols-2 gap-4">
    <div >
-  <h2 class="font-bold mx-auto px-2  text-1xl text-yellow-400 m-0"> Fasting Food </h2>
-  <h2 class="font-semibold mx-auto px-2 text-1xl text-yellow-400  mb-1">የዖም ምግብ </h2>
-  <div id="fastfood-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold mx-auto px-2  text-3xl text-yellow-400 m-0 px-2"> Fasting Food </h2>
+  <h2 class="font-semibold mx-auto px-2 text-2xl text-yellow-400  px-2 mb-2">የዖም ምግብ </h2>
+  <div id="fastfood-list" class="max-w-md mx-auto px-3 mb-8"></div>
 </div>
  <div class="text-left">
-  <h2 class="font-bold  text-1xl text-yellow-400 m-0">Fasting Breakfast</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400  mb-1">የዖም ቁርስ</h2>
-  <div id="fastbreakfast-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold  text-3xl text-yellow-400 px-2 m-0">Fasting Breakfast</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400  px-2 mb-2">የዖም ቁርስ</h2>
+  <div id="fastbreakfast-list" class="max-w-md mx-auto px-3 mb-8"></div>
 </div>
-
+</div>
+      </div>
     </section>
     <!-- Thried section-->
       <section class=" relative w-full flex justify-center py-0 px-0 bg-black">
@@ -229,36 +232,26 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
 
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
+  <div class="relative z-10 pt-10 px-6 md:px-12 pb-12 mx-auto">
+     <img
+          src="./g1.png"
+          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />  
 
-
-     style="
-       background-image: url(./g1.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
     
 </div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Traditional </p>
-       <p class="font-bold text-2xl text-yellow-400  ">Food</p>
+ <div >
+      <p class="font-bold text-4xl mb-2  px-3 text-yellow-400 px-7  ">Traditional </p>
+       <p class="font-bold text-4xl mt-0 mb-4   px-3 text-yellow-400 px-7  ">Food</p>
 
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3">ባህላዊ ምግብ</p>
+        <p class="font-semibold text-3xl  mt-0 mb-2 text-yellow-400  mt-0 mb-6 px-7 ">ባህላዊ ምግብ</p>
      </div>
      <div class="grid grid-cols-1 gap-4">
    <div >
-  <h2 class="font-bold mx-auto px-2  text-1xl text-yellow-400 m-0"> Traditional Food </h2>
-  <h2 class="font-semibold mx-auto px-2 text-1xl text-yellow-400  mb-1">ባህላዊ ምግብ </h2>
-  <div id="food-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <div id="food-list" class="max-w-md mx-auto px-2 mb-6"></div>
 </div>
- 
+  </div>
+      </div>
 
     </section>
 
@@ -268,39 +261,31 @@
         <div class="absolute inset-0 bg-green-950/50"></div>
       </div>
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
-
+<div class="relative z-10 pt-14 px-6 md:px-12 pb-12">
+   <img
+          src="./s1.png"
+          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
-     style="
-       background-image: url(./s1.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Fruit & Soft Drinks</p> 
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3">ፍራፍሬ እና ለስላሳ መጠጦች</p>
-  </div>
+
+ 
+      <p class="font-bold text-5xl text-yellow-400 mb-2  ">Fruit </p>
+      <p class="font-bold text-4xl text-yellow-400 mb-9 ">Soft Drinks</p> 
+        <p class="font-bold text-3xl text-yellow-400 mb-9">ፍራፍሬ እና ለስላሳ መጠጦች</p>
+ 
   <div class="grid grid-cols-2 gap-4">
    <div >
-  <h2 class="font-bold mx-auto px-2  text-1xl text-yellow-400 m-0"> Fruits </h2>
-  <h2 class="font-semibold mx-auto px-2 text-1xl text-yellow-400  mb-1">ፍራፍሬ</h2>
+  <h2 class="font-bold mx-auto px-2  text-3xl text-yellow-400 m-0"> Fruits </h2>
+  <h2 class="font-semibold mx-auto px-2 text-2xl text-yellow-400  mb-2">ፍራፍሬ</h2>
   <div id="fruit-list" class="max-w-md mx-auto px-2 mb-8"></div>
 </div>
  <div class="text-left">
-  <h2 class="font-bold  text-1xl text-yellow-400 m-0">Soft Drinks</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400  mb-1">ለስላሳ መጠጦች</h2>
-  <div id="softdrink-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold  text-3xl text-yellow-400 m-0">Soft Drinks</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400  mb-2">ለስላሳ መጠጦች</h2>
+  <div id="softdrink-list" class="max-w-md mx-auto px-3 mb-8"></div>
 </div>
-
+</div>
+      </div>
     </section>
 
     <section class=" relative w-full flex justify-center py-0 px-0 bg-black">
@@ -311,35 +296,27 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
 
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
-     style="
-       background-image: url(./n3.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Spaghetti & Fish</p> 
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3">ፓስታ እና  አሣ</p>
-  </div>
+       <div class="relative z-10 pt-10 px-6 md:px-12 pb-12">
+         <img
+          src="./n3.png"
+          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
+
+ 
+      <p class="font-bold text-4xl text-yellow-400  mb-2">Spaghetti</p> 
+      <p class="font-bold text-4xl text-yellow-400 mb-5  ">  & Fish</p>
+        <p class="font-semibold text-3xl text-yellow-400 mb-5">ፓስታ እና  አሣ</p>
+  
   <div class="grid grid-cols-2 gap-4">
   
  <div class="text-left">
-  <h2 class="font-bold  text-1xl text-yellow-400 px-2 m-0">Spaghetti</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400 px-2 mb-1">ፓስታ</h2>
-  <div id="spaghetti-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold  text-3xl text-yellow-400 m-0 px-2">Spaghetti</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400  mb-2 px-2">ፓስታ</h2>
+  <div id="spaghetti-list" class="max-w-md mx-auto px-3 mb-8"></div>
   </div>
   <div>
-  <h2 class="font-bold  text-1xl text-yellow-400 m-0">Fish</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400  mb-1">አሣ</h2>
+  <h2 class="font-bold  text-3xl text-yellow-400 m-0 px-2">Fish</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400  mb-1 px-2">አሣ</h2>
   <div id="fish-list" class="max-w-md mx-auto px-2 mb-8"></div>
   </div>
 </div>
@@ -351,36 +328,26 @@
         <div class="absolute inset-0 bg-green-950/50"></div>
       </div>
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
-
+   <div class="relative z-10 pt-10 px-6 md:px-12 pb-12">
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
-     style="
-       background-image: url(./m1.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Hot Drinks</p> 
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3">ትኩስ መጠጦች </p>
-  </div>
+     <img
+          src="./m1.png"
+          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
+
+
+      <p class="font-bold text-4xl text-yellow-400 mb-2  ">Hot Drinks</p> 
+        <p class="font-semibold text-3xl text-yellow-400 mb-9">ትኩስ መጠጦች </p>
+
   <div class="grid grid-cols-1 gap-4">
    <div >
-  <h2 class="font-bold mx-auto px-2  text-1xl text-yellow-400 m-0">Hot Drinks</h2>
-  <h2 class="font-semibold mx-auto px-2 text-1xl text-yellow-400  mb-1">ትኩስ መጠጦች</h2>
-  <div id="hotdrink-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold mx-auto px-2  text-3xl text-yellow-400 m-0">Hot Drinks</h2>
+  <h2 class="font-semibold mx-auto px-2 text-2xl text-yellow-400  mb-1">ትኩስ መጠጦች</h2>
+  <div id="hotdrink-list" class="max-w-md mx-auto px-3 mb-8"></div>
 </div>
-
 </div>
-
+  </div>
+   
     </section>
     
     <section class=" relative w-full flex justify-center py-0 px-0 bg-black">
@@ -391,39 +358,32 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
 
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
-     style="
-       background-image: url(./k1.png);
+      <div class="relative z-10 pt-10 px-6 md:px-12 pb-12">
+        <img
+          src="./l2.png"
+          class="absolute top-0 right-0 w-72 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
     
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Pizza & Burger</p> 
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3"> ፒዛ እና በርገር</p>
+
+      <p class="font-bold text-4xl text-yellow-400  mb-2">Pizza & </p> 
+      <p class="font-bold text-4xl text-yellow-400 mb-5  "> Burger</p> 
+        <p class="font-semibold text-3xl text-yellow-400 "> ፒዛ እና በርገር</p>
   </div>
   <div class="grid grid-cols-2 gap-4">
   
  <div class="text-left">
-  <h2 class="font-bold  text-1xl text-yellow-400 px-2 m-0">Pizza</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400 px-2 mb-1">ፒዛ</h2>
-  <div id="pizza-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold  text-3xl text-yellow-400 px-3 m-0">Pizza</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400 px-3 mb-1">ፒዛ</h2>
+  <div id="pizza-list" class="max-w-md mx-auto px-3 mb-8"></div>
   </div>
   <div>
-  <h2 class="font-bold  text-1xl text-yellow-400 m-0">Burger</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400  mb-1">በርገር</h2>
+  <h2 class="font-bold  text-3xl text-yellow-400 m-0">Burger</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400  mb-1">በርገር</h2>
   <div id="burger-list" class="max-w-md mx-auto px-2 mb-8"></div>
   </div>
 </div>
-
+   </div>
+     
     </section>
      
     <section class=" relative w-full flex justify-center py-0 px-0 bg-black">
@@ -434,39 +394,32 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
 
     <!-- HEADER IMAGE -->
-<div class="  w-full
-    sm:w-3/4
-    md:w-2/3
-    lg:w-1/2
-    h-20
-    bg-cover
-    bg-center
-    relative"
-     style="
-       background-image: url(./h1.png);
-    
-       clip-path: inset(0% 0% 0% 0% round 0px 0px 100px 100px);
-     ">
-    
-</div>
- <div class="text-center">
-      <p class="font-bold text-2xl text-yellow-400  ">Cake & Extra</p> 
-        <p class="font-semibold text-[18px] text-yellow-400 mb-3"> ኬክ እና ኤክስትራ</p>
+           <div class="relative z-10 pt-12 px-6 md:px-12 pb-12">
+              <img
+          src="./h1.png"
+          class="absolute top-0 right-0 w-64 h-40 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+        />
+
+
+      <p class="font-bold text-4xl text-yellow-400 mb-2  ">Cake & </p> 
+      <p class="font-bold text-4xl text-yellow-400  mb-5">Extra</p> 
+        <p class="font-semibold text-3xl text-yellow-400 "> ኬክ እና ኤክስትራ</p>
   </div>
   <div class="grid grid-cols-2 gap-4">
   
  <div class="text-left">
-  <h2 class="font-bold  text-1xl text-yellow-400 px-2 m-0">Cake</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400 px-2 mb-1">ኬክ</h2>
+  <h2 class="font-bold  text-3xl text-yellow-400 px-2 ">Cake</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400 px-2 mb-1">ኬክ</h2>
   <div id="cake-list" class="max-w-md mx-auto px-2 mb-8"></div>
   </div>
   <div>
-  <h2 class="font-bold  text-1xl text-yellow-400 m-0">Extra</h2>
-  <h2 class="font-semibold text-1xl text-yellow-400  mb-1">ኤክስትራ</h2>
-  <div id="extra-list" class="max-w-md mx-auto px-2 mb-8"></div>
+  <h2 class="font-bold  text-3xl text-yellow-400 px-3 m-0">Extra</h2>
+  <h2 class="font-semibold text-2xl text-yellow-400 px-3 mb-1">ኤክስትራ</h2>
+  <div id="extra-list" class="max-w-md mx-auto px-3 mb-8"></div>
   </div>
 </div>
-
+</div>
+   
     </section>
     <script>
       const breakFastFoodItems=[
@@ -484,13 +437,13 @@
          { name1: "Omelette", name2: " ኦምሌት ", price: 180 },
         { name1: "Egg With Meat", name2: " እንቁላል በስጋ ", price: 245 },
         
-        { name1: "Fetira ", name2: " ፈጢራ ", price: 177 },
+        { name1: "Fetira ", name2: " ፈጢራ ", price: 210 },
         {
           name1: " Specal Fetira ",
           name2: "እስፔሻል  ፈጢራ  ",
-          price: 277,
+          price: 285,
         },
-        { name1: "Specal Chechbesa", name2: " እስፔሻል ጨጨብሳ", price: 195 },
+        { name1: "Specal Chechbesa", name2: " እስፔሻል ጨጨብሳ", price: 215 },
         
         { name1: "Hay with butter ", name2: " ድርቆሽ በቅቤ", price: 183 },
         
@@ -551,14 +504,14 @@
        { name1: "Fasting Fetira ", name2: "የዖም ፈጢራ ", price: 177 },
         { name1: " Chechbesa", name2: " ጨጨብሳ", price: 185 },
         { name1: "vegitable with Bread", name2: " አትክልት በዳቦ", price: 167 },
-        { name1: "Salad", name2: " ሰላጣ ", price: 205 },
+        { name1: "Salad", name2: " ሰላጣ ", price: 265 },
          { name1: "Drekoshi Firfir", name2: "ድርቆሽ ፍርፍር", price: 165 },
         
       ];
        const fastFoodItem = [
         { name1: "Palmes Specal", name2: " ፖልምስ እስፔሻል ", price: 977 },
         { name1: "Palmes Specal Kategna", name2: "ፖልምስ እስፔሻል ቃተኛ", price: 550 },
-        { name1: "Gomen Ketefo", name2: "ጎመንክትፎ", price: 207 },
+        { name1: "Gomen Ketefo", name2: "ጎመንክትፎ", price: 146 },
         { name1: "Shro with Vegetable ", name2: " ሽሮበ አትክልት", price: 207 },
         {
           name1: " Shro Tegabino",
@@ -590,8 +543,8 @@
           name2: "ቲማቲም ቁርጥ ",
           price: 140,
         },
-        { name1: "Tomato Souce", name2: "ቲማቲም ስልስ", price: 130 },
-        { name1: "Teliba fitifite", name2: "ተልባፍትፍት", price: 125 },
+        { name1: "Tomato Souce", name2: "ቲማቲም ስልስ", price: 140 },
+        { name1: "Teliba fitifite", name2: "ተልባፍትፍት", price: 150 },
         
         {
           name1: "Potatoes with flax",
@@ -606,7 +559,7 @@
         {
           name1: "Sunflower Scrambled",
           name2: "የሱፍ ፍትፍት ",
-          price: 128,
+          price: 150,
         },
         {
           name1: "Fasting Befe",
@@ -623,7 +576,7 @@
          { name1: "Palms Specal ", name2: " ፖልምስ እስፔሻል ", price: 1700 },
            { name1: "Palms Kategna ", name2: " ፖልምስ ቃተኛ", price: 790 },
         { name1: "Specal Meat Scrambled", name2: "እስፔሻል ስጋ ፍርፍር ", price: 285 },
-        { name1: "Normal Meat Scrambled", name2: " ስጋ ፍርፍር ", price: 195 },
+        { name1: "Normal Meat Scrambled", name2: " ስጋ ፍርፍር ", price: 225 },
         { name1: "Quanta Firfir ", name2: "ቋንጣ ፍርፍር", price: 245 },
         {
           name1: " Specal Quanta Firfir",
@@ -648,20 +601,20 @@
         { name1: "Fleato  Tips", name2: "ጭቅና ጥብስ", price: 285 },
       ];
            const fruitItems = [
-    { name1: "Papaya", name2: "ፓፓያ", price: 130 },
-    { name1: "Mango", name2: "ማንጎ", price: 130 },
-    { name1: "Zeyitun", name2: "ዘይቱን", price: 130 },
-    { name1: "Avocado", name2: "አቮካዶ", price: 138 },
-    { name1: "Pineapple", name2: "አናናስ", price: 130 },
+    { name1: "Papaya", name2: "ፓፓያ", price: 138 },
+    { name1: "Mango", name2: "ማንጎ", price: 138 },
+    { name1: "Zeyitun", name2: "ዘይቱን", price: 138 },
+    { name1: "Avocado", name2: "አቮካዶ", price: 158 },
+    { name1: "Pineapple", name2: "አናናስ", price: 138 },
     { name1: "Telba juice", name2: "ተልባ ጭማቂ", price: 128 },
-    { name1: "Spris juice", name2: "ስፕሪስ ጭማቂ", price: 130 },
-    { name1: "Watermelone", name2: "ሀብሃብ", price: 130 },
-    { name1: "Special juice", name2: "ልዩ ጭማቂ", price: 167 },
+    { name1: "Spris juice", name2: "ስፕሪስ ጭማቂ", price: 138 },
+    { name1: "Watermelone", name2: "ሀብሃብ", price: 138 },
+    { name1: "Special juice", name2: "ልዩ ጭማቂ", price: 197 },
     { name1: "Mixed juice", name2: "የተቀላቀለ ጭማቂ", price: 165 },
     { name1: "Strawberry milk shake", name2: "ስትሮበሪ ወተት ሼክ ", price: 162 },
     { name1: "Chocolate milk shake", name2: "ቾኮሌት ወተት ሼክ", price: 162 },
     { name1: "Protein milk shake", name2: "ፕሮቲን ወተት ሼክ", price: 174 },
-    { name1: "Fruit punch juice", name2: "ፍራፍሬ ፓንች ጭማቂ", price: 175 }
+    { name1: "Fruit punch juice", name2: "ፍራፍሬ ፓንች ጭማቂ", price: 245 }
     ];
       const softDrinksItems = [
     { name1: "Soft Drinks", name2: "ለስላሳ መጠጦች", price: 75 },
@@ -699,16 +652,16 @@
 ];
     const SpaghettiItems = [
     {name1: "Palms spetial vegitable", name2: "ፓልምስ ስፔሻል አትክልት", price: 345},
-    { name1: "Spaghetti with Tomato", name2: "ፓስታ በቲማቲም", price: 155 },
-    { name1: "Spaghetti with vegetables", name2: "ፓስታ ከአትክልት", price: 167 },
-    { name1: "Spaghetti with vegetable and meat", name2: "ፓስታ ከአትክልት እና ስጋ", price: 245 },
+    { name1: "Spaghetti with Tomato", name2: "ፓስታ በቲማቲም", price: 175 },
+    { name1: "Spaghetti with vegetables", name2: "ፓስታ በአትክልት", price: 195 },
+    { name1: "Spaghetti with vegetable and meat", name2: "ፓስታ በአትክልት እና ስጋ", price: 245 },
     { name1: "Spaghetti with Tuna", name2: "ፓስታ ከቱና", price: 225 },
     { name1: "Spaghetti with Meat", name2: "ፓስታ በስጋ", price: 245 },
-    { name1: "Macaroni with tomato sauce", name2: "ማካሮኒ በቲማቲም", price: 155 },
-    { name1: "Macaroni with vegetable sauce", name2: "ማካሮኒ በአትክልት ", price: 167 },
+    { name1: "Macaroni with tomato sauce", name2: "ማካሮኒ በቲማቲም", price: 175 },
+    { name1: "Macaroni with vegetable sauce", name2: "ማካሮኒ በአትክልት ", price: 195 },
     { name1: "Macaroni with meat", name2: "ማካሮኒ በስጋ", price: 245 },
-    { name1: "Rice with tomato sauce", name2: "ሩዝ በቲማቲም", price: 155 },
-    { name1: "Rice with Vegetable", name2: "ሩዝ በአትክልት", price: 167 },
+    { name1: "Rice with tomato sauce", name2: "ሩዝ በቲማቲም", price: 175 },
+    { name1: "Rice with Vegetable", name2: "ሩዝ በአትክልት", price: 195 },
     { name1: "Rice with Meat", name2: "ሩዝ በስጋ", price: 245 }
 ];
    const fishItems = [
@@ -774,7 +727,7 @@
         {
           name1: "Tuna Pizza",
           name2: "ቱና ፒዛ",
-          price: 355,
+          price: 335,
         },
        
       ];
@@ -878,7 +831,7 @@
       {
           name1: "Bread",
           name2: "ዳቦ",
-          price: 25,
+          price: 30,
         },
 {
           name1: "Egg",
