@@ -45,11 +45,19 @@
       .logo-anim {
         animation: logoDropIn 700ms cubic-bezier(.22,.9,.34,1) both, logoPulse 2600ms ease-in-out 900ms infinite;
         will-change: transform, opacity, filter;
-        transition: transform 220ms ease, filter 220ms ease;
+        transition: transform 260ms cubic-bezier(.2,.9,.2,1), filter 260ms ease, box-shadow 260ms ease;
+        /* subtle base glow so the logo has presence without being overpowering */
+        box-shadow: 0 6px 18px rgba(250,204,21,0.08);
       }
-      .logo-anim:hover {
-        transform: translateY(0) scale(1.08) rotate(-3deg);
-        filter: saturate(1.45) contrast(1.12) drop-shadow(0 8px 22px rgba(250,204,21,0.32));
+      /* Hover effects only for devices that support hovering and when user
+         hasn't requested reduced motion. Keeps touch devices unaffected. */
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+        .logo-anim:hover {
+          transform: translateY(-2px) scale(1.08) rotate(-2.5deg);
+          /* gentle warm glow on hover */
+          filter: saturate(1.28) contrast(1.12) drop-shadow(0 10px 22px rgba(250,204,21,0.18));
+          box-shadow: 0 10px 24px rgba(250,204,21,0.14);
+        }
       }
 
       /* Title: modern animated gradient + entrance */
@@ -86,25 +94,48 @@
          pushed under the right-side decorative images. Targets common utility
          class patterns and the hero title. Uses !important to override Tailwind
          utility sizing for narrow viewports only. */
-      @media (max-width: 639px) {
-        /* Hero title */
+  @media (max-width: 639px) {
+        /* Make the hero title a bit bigger on phones while keeping line-height tight */
         .title-modern, h1.title-modern, h1[class*="text-7xl"] {
-          font-size: 2.2rem !important; /* ~35px -> reduce to fit */
-          line-height: 1.02 !important;
+          font-size: 3rem !important; /* slightly larger on phones (~48px) */
+          line-height: 1.04 !important;
+        }
+
+        /* Slightly larger logo on mobile, but not too large to avoid overlap */
+        .logo-anim {
+          width: 8.5rem !important; /* ~136px */
+          height: 8.5rem !important;
+          box-shadow: 0 8px 20px rgba(250,204,21,0.10) !important;
         }
 
         /* Section large headings (text-4xl) */
         p.font-bold[class*="text-4xl"], p.font-bold.text-5xl, p[class*="text-5xl"],
         p[class*="text-4xl"] {
-          font-size: 1.45rem !important; /* reduce from 2.25rem */
-          line-height: 1.05 !important;
+          font-size: 1.6rem !important; /* slightly larger than before */
+          line-height: 1.06 !important;
         }
 
-        /* Sub-headings (text-3xl -> slightly smaller)
-           Target h2 and p elements that use the utility class */
+        /* Sub-headings (text-3xl -> slightly larger on mobile) */
         h2[class*="text-3xl"], p[class*="text-3xl"], h2.text-3xl {
-          font-size: 1.15rem !important; /* reduce from ~1.875rem */
+          font-size: 1.2rem !important;
         }
+
+        /* Make the contact widget a little smaller on phones so it doesn't dominate the hero */
+        .contact-widget {
+          right: 0.75rem !important;
+          bottom: 0.75rem !important;
+        }
+        .contact-widget > div {
+          padding: 0.375rem 0.5rem !important; /* px-2 py-1 */
+          gap: 0.25rem !important; /* smaller gap between items */
+        }
+        .contact-widget a {
+          font-size: 13px !important;
+        }
+        .contact-widget span {
+          font-size: 9px !important;
+        }
+        .contact-widget svg { width: 0.75rem !important; height: 0.75rem !important; }
       }
     </style>
   </head>
@@ -126,26 +157,36 @@
         <img
           src="./logo_4.jpg"
           alt="Palms"
-          class="w-30 h-32 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-b-full object-cover shadow-md logo-anim"
+          class="w-30 h-32 sm:w-28 sm:h-28 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-b-full object-cover shadow-md logo-anim"
           style="filter: saturate(1.3) contrast(1.08);"
         />
       </div>
       <div class="relative z-10 flex items-center justify-center h-full px-6 ">
         <div>
           <h1
-            class="text-7xl sm:text-5xl lg:text-6xl font-inter font-bold text-yellow-400 title-modern"
+            class="text-6xl sm:text-7xl lg:text-8xl font-inter font-extrabold text-yellow-400 title-modern leading-tight tracking-tight"
           >
             Palms Menu
           </h1>
-       <p class="absolute  right-2 bottom-10 text-yellow-400 text-[18px] font-medium">
-      Call us: +251 931 080 356  
-    </p>
-     <p class="absolute  right-2  bottom-5 text-yellow-400 text-[18px] font-medium">
-       +251 912 989 812
-    </p>
-     <p class="absolute  right-2  bottom-0 text-yellow-400 text-[18px] font-medium">
-       +251 918 765 522
-    </p>
+      <!-- Subtle contact widget: transparent, modern, and non-intrusive -->
+      <div class="absolute right-4 bottom-4 z-40 contact-widget">
+        <div class="bg-black/20 backdrop-blur-sm border border-yellow-400/15 rounded-lg px-3 py-2 flex flex-col items-end gap-1"
+             role="group" aria-label="Contact numbers">
+          <span class="text-yellow-200 text-[10px] uppercase tracking-wider font-medium select-none">Call</span>
+          <a href="tel:+251931080356" class="flex items-center gap-2 text-yellow-300 hover:text-yellow-400 transition-colors text-[14px] sm:text-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12.86.37 1.7.73 2.49a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.59-1.59a2 2 0 0 1 2.11-.45c.8.36 1.63.61 2.49.73A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="font-semibold">+251 931 080 356</span>
+          </a>
+          <a href="tel:+251912989812" class="flex items-center gap-2 text-yellow-300 hover:text-yellow-400 transition-colors text-[14px] sm:text-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12.86.37 1.7.73 2.49a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.59-1.59a2 2 0 0 1 2.11-.45c.8.36 1.63.61 2.49.73A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="font-semibold">+251 912 989 812</span>
+          </a>
+          <a href="tel:+251918765522" class="flex items-center gap-2 text-yellow-300 hover:text-yellow-400 transition-colors text-[14px] sm:text-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12.86.37 1.7.73 2.49a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.59-1.59a2 2 0 0 1 2.11-.45c.8.36 1.63.61 2.49.73A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="font-semibold">+251 918 765 522</span>
+          </a>
+        </div>
+      </div>
         <div>
         
       </div>
@@ -330,10 +371,10 @@
   <div class=" relative z-10 w-full  shadow-2xl overflow-hidden">
    <div class="relative z-10 pt-10 px-6 md:px-12 pb-12">
     <!-- HEADER IMAGE -->
-     <img
-          src="./m1.png"
-          class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
-        />
+  <img
+    src="./macchiato.jpg"
+    class="absolute top-0 right-0 w-64 h-48 lg:w-96 lg:h-56 object-cover rounded-bl-full shadow-md"
+     />
 
 
       <p class="font-bold text-4xl text-yellow-400 mb-2  ">Hot Drinks</p> 
